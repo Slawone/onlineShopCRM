@@ -1,0 +1,225 @@
+.modal {  
+  min-height: 613px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.modal__back {
+  width: 100%;
+  max-width: 792px;
+  padding: 32px 106px 39px;
+  background-color: rgba(242, 240, 249, 1);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal__close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.modal__container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.modal__title {
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6E6893;
+  border-bottom: 1px solid rgba(198, 194, 222, 1);
+  padding-bottom: 21px;
+  margin-bottom: 21px;
+}
+.modal__body {
+  margin-bottom: 28px;
+  padding: 28px;
+  width: 100%;
+  min-height: 403px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5,60px);
+  row-gap: 12px;
+  grid-template-areas:
+    "name descr"
+    "category descr"
+    "units amount"
+    "discount price"
+    ". add-img";
+}
+
+.field-name {
+  grid-area: name;
+}
+.field-category {
+  grid-area: category;
+}
+.field-units {
+  grid-area: units;
+}
+.field-discount {
+  grid-area: discount;
+}
+.field-descr {
+  grid-area: descr;
+}
+.field-amount {
+  grid-area: amount;
+}
+.field-price {
+  grid-area: price;
+}
+
+fieldset {
+  border: none;
+}
+
+.modal__input-title {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6E6893;
+  margin-bottom: 5px;
+}
+
+.modal__input {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  background-color: #F4F2FF;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.checkbox__item {
+  display: none;
+}
+
+.checkbox__custom-item {
+  display: block;
+  position: relative;
+  width: 45px;
+  height: 40px;
+  background-color: #F4F2FF;
+  border-radius: 6px;
+}
+
+.checkbox__custom-item:before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('../img/tick.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+} 
+
+.checkbox__custom-item:before:focus {
+  box-shadow: 0px 0px 10px rgba(113, 0, 227, 0.5);
+} 
+
+.checkbox__input {
+  margin-bottom: 0;
+}
+
+.checkbox__item:checked ~ .checkbox__custom-item:before {
+  opacity: 1;
+}
+
+.modal__textarea {
+  width: 100%;
+  height: 112px;
+  background-color: #F4F2FF;
+  border: none;
+  border-radius: 6px;
+  resize: none;
+}
+
+.modal__btn {
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #6D5BD0;
+  border-radius: 6px;
+  border: none;
+}
+
+.modal__btn_add-img {
+  grid-area: add-img;
+  width: 240px;
+  display: block;
+  font-size: 14px;
+  margin-top: 18px;
+  padding: 11px 0;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal__cost {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6E6893;
+}
+
+.modal__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6D5BD0;
+}
+
+.modal__btn_add-product {
+  font-size: 16px;
+  padding: 10px 25px;
+}
+
+@media (max-width: 768px) {
+  .modal__body {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 60px);
+    grid-template-areas: 
+    "name"
+    "category"
+    "units"
+    "discount"
+    "descr"
+    "descr"
+    "amount"
+    "price"
+    "add-img";
+  }
+  .modal__back {
+   top: 55%;
+  }
+
+  .modal__close {
+    top: 30px;
+  }
+}

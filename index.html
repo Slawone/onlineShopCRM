@@ -8,162 +8,72 @@
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <div class="section">
-    <div class="container">
-      <table class="table">
-        <div class="table__control">
-          <button>Фильтр</button>
-          <input type="search" name="search" id="search">
-          <button>Добавить товар</button>
+  <form class="modal">
+    <div class="modal__back">
+      <button class="modal__close">
+        <img src="img/close.svg" alt="Закрыть форму" class="modal__close-img">
+      </button>
+      <div class="modal__container">
+        <h2 class="modal__title">Добавить ТОВАР</h2>
+        <div class="modal__body">
+          <fieldset class="field-name">
+            <h3 class="modal__input-title">Наименование</h3>
+            <label class="modal__label">
+              <input type="text" name="name" class="modal__input">
+            </label>
+          </fieldset>
+          <fieldset class="field-category">
+            <h3 class="modal__input-title">Категория</h3>
+            <label class="modal__label">
+              <input class="modal__input" type="text" name="category">
+            </label>
+          </fieldset>
+          <fieldset class="field-units">
+            <h3 class="modal__input-title">Единицы измерения</h3>
+            <label class="modal__label">
+              <input class="modal__input" type="text" name="units">
+            </label>
+          </fieldset>
+          <fieldset class="field-discount">
+            <h3 class="modal__input-title">Дисконт</h3>
+            <label class="checkbox modal__label">
+              <input class="checkbox__item" type="checkbox" name="discount">
+              <span class="checkbox__custom-item"></span>
+              <input class="checkbox__input modal__input" type="text" disabled>
+            </label>
+          </fieldset>
+          <fieldset class="field-descr">
+            <h3 class="modal__input-title">Описание</h3>
+            <label class="modal__label">
+              <textarea class="modal__textarea" name="description"></textarea>
+            </label>
+          </fieldset>
+          <fieldset class="field-amount">
+            <h3 class="modal__input-title">Количество</h3>
+            <label class="modal__label">
+              <input class="modal__input" type="number" name="amount">
+            </label>
+          </fieldset>
+          <fieldset class="field-price">
+            <h3 class="modal__input-title">Цена</h3>
+            <label class="modal__label">
+              <input class="modal__input" type="number" name="price">
+            </label>
+          </fieldset>
+          <button class="modal__btn modal__btn_add-img">Добавить изображение</button>
         </div>
-        <tr>
-          <th>ID</th>
-          <th>Наименование</th>
-          <th>Категория</th>
-          <th>ед/изм</th>
-          <th>количество</th>
-          <th>цена</th>
-          <th>ИТОГ</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
-        <tr>
-          <td>937295527</td>
-          <td>Настольная игра “На 4-х ногах”</td>
-          <td>Настольные игры</td>
-          <td>шт</td>
-          <td>12</td>
-          <td>$14</td>
-          <td>$168</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
-        <tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr><tr>
-          <td>246016548</td>
-          <td>Навигационная система Soundmax</td>
-          <td>Техника для дома</td>
-          <td>шт</td>
-          <td>5</td>
-          <td>$100</td>
-          <td>$500</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
-        <div class="table__switch">
-          
+        <div class="modal__footer">
+          <div class="modal__cost">
+            Итоговая стоимость: <span class="modal__price">$ 900.00</span>
+          </div>
+          <button class="modal__btn modal__btn_add-product">Добавить товар</button>
         </div>
-      </table>
+      </div>
     </div>
+  </form>
+
+  <div class="container">
+    
   </div>
 </body>
 </html>
