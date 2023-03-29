@@ -9,6 +9,10 @@
   display: none;
 }
 
+/* .modal_flex {
+  display: flex;
+} */
+
 .modal__back {
   width: 100%;
   max-width: 792px;
