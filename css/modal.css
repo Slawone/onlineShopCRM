@@ -16,12 +16,15 @@
   right: 0;
   top: 0;
   visibility: hidden;
+  opacity: 0;
   width: 100%;
   z-index: 1;
+  transition: all 1s;
 }
 
 .modal-overlay.is-visible {
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__back {
