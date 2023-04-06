@@ -8,6 +8,26 @@
 // const checkboxInput = document.querySelector('.checkbox__input');
 // const modalPrice = document.querySelector('.modal__price');
 const tableBody = document.querySelector('.table__body');
+const modal = document.querySelector('.modal');
+const addBtn = document.querySelector('.crm__btn_add-product');
+const closeFormBtn = document.querySelector('.modal__close-img');
+const modalOverlay = document.querySelector('.modal-overlay');
+
+addBtn.addEventListener('click', () => {
+  modalOverlay.classList.add('is-visible');
+});
+
+closeFormBtn.addEventListener('click', () => {
+  modalOverlay.classList.remove('is-visible');
+});
+
+modalOverlay.addEventListener('click', () => {
+  modalOverlay.classList.remove('is-visible');
+});
+
+modal.addEventListener('click', event => {
+  event.stopPropagation();
+});
 
 const goods = [
   {
