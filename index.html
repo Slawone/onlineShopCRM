@@ -9,72 +9,74 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <form class="modal modal_flex">
-    <div class="modal__back">
-      <button class="modal__close">
-        <img src="img/close.svg" alt="Закрыть форму" class="modal__close-img">
-      </button>
-      <div class="modal__container">
-        <div class="modal__box">
-          <h2 class="modal__title">Добавить ТОВАР</h2>
-          <div class="modal__id">id: <span class="modal__id-value">201910241</span></div>
-        </div>
-        <div class="modal__body">
-          <fieldset class="field-name">
-            <h3 class="modal__input-title">Наименование</h3>
-            <label class="modal__label">
-              <input type="text" name="name" class="modal__input">
-            </label>
-          </fieldset>
-          <fieldset class="field-category">
-            <h3 class="modal__input-title">Категория</h3>
-            <label class="modal__label">
-              <input class="modal__input" type="text" name="category">
-            </label>
-          </fieldset>
-          <fieldset class="field-units">
-            <h3 class="modal__input-title">Единицы измерения</h3>
-            <label class="modal__label">
-              <input class="modal__input" type="text" name="units">
-            </label>
-          </fieldset>
-          <fieldset class="field-discount">
-            <h3 class="modal__input-title">Дисконт</h3>
-            <label class="checkbox modal__label">
-              <input class="checkbox__item" type="checkbox" name="discount">
-              <span class="checkbox__custom-item"></span>
-              <input class="checkbox__input modal__input" type="text" disabled>
-            </label>
-          </fieldset>
-          <fieldset class="field-descr">
-            <h3 class="modal__input-title">Описание</h3>
-            <label class="modal__label">
-              <textarea class="modal__textarea" name="description"></textarea>
-            </label>
-          </fieldset>
-          <fieldset class="field-amount">
-            <h3 class="modal__input-title">Количество</h3>
-            <label class="modal__label">
-              <input class="modal__input" type="number" name="amount">
-            </label>
-          </fieldset>
-          <fieldset class="field-price">
-            <h3 class="modal__input-title">Цена</h3>
-            <label class="modal__label">
-              <input class="modal__input" type="number" name="price">
-            </label>
-          </fieldset>
-          <button class="modal__btn modal__btn_add-img">Добавить изображение</button>
-        </div>
-        <div class="modal__footer">
-          <div class="modal__cost">
-            Итоговая стоимость: <span class="modal__price">$ 900.00</span>
+  <div class="modal-overlay">
+    <form class="modal">
+      <div class="modal__back">
+        <button class="modal__close" type="button">
+          <img src="img/close.svg" alt="Закрыть форму" class="modal__close-img">
+        </button>
+        <div class="modal__container">
+          <div class="modal__box">
+            <h2 class="modal__title">Добавить ТОВАР</h2>
+            <div class="modal__id">id: <span class="modal__id-value">201910241</span></div>
           </div>
-          <button class="modal__btn modal__btn_add-product">Добавить товар</button>
+          <div class="modal__body">
+            <fieldset class="field-name">
+              <h3 class="modal__input-title">Наименование</h3>
+              <label class="modal__label">
+                <input type="text" name="name" class="modal__input">
+              </label>
+            </fieldset>
+            <fieldset class="field-category">
+              <h3 class="modal__input-title">Категория</h3>
+              <label class="modal__label">
+                <input class="modal__input" type="text" name="category">
+              </label>
+            </fieldset>
+            <fieldset class="field-units">
+              <h3 class="modal__input-title">Единицы измерения</h3>
+              <label class="modal__label">
+                <input class="modal__input" type="text" name="units">
+              </label>
+            </fieldset>
+            <fieldset class="field-discount">
+              <h3 class="modal__input-title">Дисконт</h3>
+              <label class="checkbox modal__label">
+                <input class="checkbox__item" type="checkbox" name="discount">
+                <span class="checkbox__custom-item"></span>
+                <input class="checkbox__input modal__input" type="text" disabled>
+              </label>
+            </fieldset>
+            <fieldset class="field-descr">
+              <h3 class="modal__input-title">Описание</h3>
+              <label class="modal__label">
+                <textarea class="modal__textarea" name="description"></textarea>
+              </label>
+            </fieldset>
+            <fieldset class="field-amount">
+              <h3 class="modal__input-title">Количество</h3>
+              <label class="modal__label">
+                <input class="modal__input" type="number" name="amount">
+              </label>
+            </fieldset>
+            <fieldset class="field-price">
+              <h3 class="modal__input-title">Цена</h3>
+              <label class="modal__label">
+                <input class="modal__input" type="number" name="price">
+              </label>
+            </fieldset>
+            <button class="modal__btn modal__btn_add-img">Добавить изображение</button>
+          </div>
+          <div class="modal__footer">
+            <div class="modal__cost">
+              Итоговая стоимость: <span class="modal__price">$ 900.00</span>
+            </div>
+            <button class="modal__btn modal__btn_add-product">Добавить товар</button>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 
   <section class="crm">
     <div class="container">

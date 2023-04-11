@@ -10,6 +10,7 @@ html {
 }
 
 body {
+  background-color: #D9D5EC;
   min-width: 320px;
   min-height: 100vh;
   font-family: Inter, sans-serif;
