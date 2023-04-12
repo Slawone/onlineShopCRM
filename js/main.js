@@ -17,16 +17,12 @@ addBtn.addEventListener('click', () => {
   modalOverlay.classList.add('is-visible');
 });
 
-closeFormBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('is-visible');
-});
-
-modalOverlay.addEventListener('click', () => {
-  modalOverlay.classList.remove('is-visible');
-});
-
-modal.addEventListener('click', event => {
-  event.stopPropagation();
+modalOverlay.addEventListener('click', e => {
+  const target = e.target;
+  if (target === modalOverlay || target.closest('.modal__close-img')) {
+    modalOverlay.classList.remove('is-visible');
+  }
+  console.log(target);
 });
 
 const goods = [
