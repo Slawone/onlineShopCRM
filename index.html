@@ -7,6 +7,11 @@
   <title>CRM Online - Shop</title>
   <link rel="stylesheet" href="css/index.css">
   <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      crmInit();
+    })
+  </script>
 </head>
 <body>
   <div class="modal-overlay">
@@ -44,7 +49,8 @@
               <label class="checkbox modal__label">
                 <input class="checkbox__item" type="checkbox" name="discount">
                 <span class="checkbox__custom-item"></span>
-                <input class="checkbox__input modal__input" type="text" disabled>
+                <input class="checkbox__input modal__input" type="text"
+                name="discountField" disabled>
               </label>
             </fieldset>
             <fieldset class="field-descr">
