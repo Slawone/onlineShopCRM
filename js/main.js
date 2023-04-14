@@ -39,13 +39,13 @@ const goods = [
     });
   };
 
-  const activeField = (form) => {
+  const activeField = ({discount, discountField}) => {
     form.addEventListener('click', () => {
-      if (form.discount.checked) {
-        form.discountField.disabled = false;
+      if (discount.checked) {
+        discountField.disabled = false;
       } else {
-        form.discountField.value = '';
-        form.discountField.disabled = true;
+        discountField.value = '';
+        discountField.disabled = true;
       }
     });
   };
