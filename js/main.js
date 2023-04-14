@@ -8,25 +8,20 @@
 // const checkboxInput = document.querySelector('.checkbox__input');
 // const modalPrice = document.querySelector('.modal__price');
 const tableBody = document.querySelector('.table__body');
-const modal = document.querySelector('.modal');
+// const modal = document.querySelector('.modal');
 const addBtn = document.querySelector('.crm__btn_add-product');
-const closeFormBtn = document.querySelector('.modal__close-img');
+// const closeFormBtn = document.querySelector('.modal__close-img');
 const modalOverlay = document.querySelector('.modal-overlay');
 
 addBtn.addEventListener('click', () => {
   modalOverlay.classList.add('is-visible');
 });
 
-closeFormBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('is-visible');
-});
-
-modalOverlay.addEventListener('click', () => {
-  modalOverlay.classList.remove('is-visible');
-});
-
-modal.addEventListener('click', event => {
-  event.stopPropagation();
+modalOverlay.addEventListener('click', e => {
+  const target = e.target;
+  if (target === modalOverlay || target.closest('.modal__close-img')) {
+    modalOverlay.classList.remove('is-visible');
+  }
 });
 
 const goods = [
@@ -67,7 +62,7 @@ const createRow = (obj) => {
         <button>
           <img src="img/edit.svg">
         </button>
-        <button>
+        <button class="delete">
           <img src="img/delete.svg">
         </button>
       </td>
@@ -77,5 +72,14 @@ const createRow = (obj) => {
 
 const renderGoods = (arr) =>
   arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
+
+tableBody.addEventListener('click', e => {
+  const target = e.target;
+
+  if (target.closest('.delete')) {
+    target.closest('tr').remove();
+  }
+});
+
 
 renderGoods(goods);
