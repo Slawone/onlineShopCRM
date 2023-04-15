@@ -77,6 +77,22 @@ const goods = [
     `;
   };
 
+  const renderTotalPrice = () => {
+    const totalPrice = document.querySelector('.crm__price');
+    const tablePrices = document.querySelectorAll('.total-price');
+
+    let count = 0;
+    const prices = [];
+
+    tablePrices.forEach(item => {
+      prices.push(+item.textContent);
+    });
+
+    count = prices.reduce((acc, item) => acc += item, 0);
+
+    totalPrice.textContent = `$${count}`;
+  };
+
   const renderGoods = (arr) =>
     arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
 
@@ -87,14 +103,15 @@ const goods = [
 
       if (target.closest('.delete')) {
         target.closest('tr').remove();
+        renderTotalPrice();
       }
     });
   };
 
   const formControl = (form) => {
     form.price.addEventListener('blur', e => {
-      const totalPrice = document.querySelector('.modal__total-price');
-      totalPrice.textContent = form.price.value * form.amount.value;
+      const totalPrice = document.querySelector('.modal__price');
+      totalPrice.textContent = `$${form.price.value * form.amount.value}`;
     });
 
     form.addEventListener('submit', e => {
@@ -113,23 +130,8 @@ const goods = [
 
       form.reset();
       closeModal();
+      renderTotalPrice();
     });
-  };
-
-  const renderTotalPrice = () => {
-    const totalPrice = document.querySelector('.crm__price');
-    const tablePrices = document.querySelectorAll('.total-price');
-
-    let count = 0;
-    const prices = [];
-
-    tablePrices.forEach(item => {
-      prices.push(+item.textContent);
-    });
-
-    count = prices.reduce((acc, item) => acc += item, 0);
-
-    totalPrice.textContent = count;
   };
 
   const init = () => {
