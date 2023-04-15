@@ -55,6 +55,10 @@ iframe {
   border: none;
 }
 
+input, textarea {
+  padding: 10px;
+}
+
 /*
 Доступно скрываю элементы
 */

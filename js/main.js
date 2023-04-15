@@ -109,9 +109,12 @@ const goods = [
   };
 
   const formControl = (form) => {
+    const totalPrice = document.querySelector('.modal__price');
+
     form.price.addEventListener('blur', e => {
-      const totalPrice = document.querySelector('.modal__price');
-      totalPrice.textContent = `$${form.price.value * form.amount.value}`;
+      const cost = form.price.value * form.amount.value;
+      const sale = cost - form.discountField.value * cost / 100;
+      totalPrice.textContent = `$${sale}`;
     });
 
     form.addEventListener('submit', e => {
@@ -129,6 +132,7 @@ const goods = [
       tableBody.insertAdjacentHTML('beforeend', createRow(newRow));
 
       form.reset();
+      totalPrice.textContent = 0;
       closeModal();
       renderTotalPrice();
     });
