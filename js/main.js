@@ -25,10 +25,10 @@ const goods = [
   const modalOverlay = document.querySelector('.modal-overlay');
   const form = document.querySelector('.modal');
 
-  const modalControl = () => {
-    const openModal = () => modalOverlay.classList.add('is-visible');
-    const closeModal = () => modalOverlay.classList.remove('is-visible');
+  const openModal = () => modalOverlay.classList.add('is-visible');
+  const closeModal = () => modalOverlay.classList.remove('is-visible');
 
+  const modalControl = () => {
     addBtn.addEventListener('click', openModal);
 
     modalOverlay.addEventListener('click', e => {
@@ -61,7 +61,7 @@ const goods = [
         <td>${units}</td>
         <td>${count}</td>
         <td>${price}</td>
-        <td>${price * count}</td>
+        <td>$<span class="total-price">${price * count}</span></td>
         <td class="table__icons">
           <button>
             <img src="img/no-image.svg">
@@ -91,12 +91,54 @@ const goods = [
     });
   };
 
+  const formControl = (form) => {
+    form.price.addEventListener('blur', e => {
+      const totalPrice = document.querySelector('.modal__total-price');
+      totalPrice.textContent = form.price.value * form.amount.value;
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const id = document.querySelector('.modal__id-value');
+      const formData = new FormData(e.target);
+
+      const newRow = Object.fromEntries(formData);
+
+      newRow.id = id.textContent;
+      newRow.title = newRow.name;
+      newRow.count = newRow.amount;
+
+      tableBody.insertAdjacentHTML('beforeend', createRow(newRow));
+
+      form.reset();
+      closeModal();
+    });
+  };
+
+  const renderTotalPrice = () => {
+    const totalPrice = document.querySelector('.crm__price');
+    const tablePrices = document.querySelectorAll('.total-price');
+
+    let count = 0;
+    const prices = [];
+
+    tablePrices.forEach(item => {
+      prices.push(+item.textContent);
+    });
+
+    count = prices.reduce((acc, item) => acc += item, 0);
+
+    totalPrice.textContent = count;
+  };
 
   const init = () => {
     renderGoods(goods);
     modalControl();
     deleteTr();
     activeField(form);
+    formControl(form);
+    renderTotalPrice();
   };
 
   window.crmInit = init;
