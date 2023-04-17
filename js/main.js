@@ -1,29 +1,5 @@
 'use strict';
 
-// const modalTitle = document.querySelector('.modal__title');
-// const modalCloseBtn = document.querySelector('.modal__close');
-// const modalIdValue = document.querySelector('.modal__id-value');
-// const modalForm = document.querySelector('.modal');
-// const checkboxItem = document.querySelector('.checkbox__item');
-// const checkboxInput = document.querySelector('.checkbox__input');
-// const modalPrice = document.querySelector('.modal__price');
-const tableBody = document.querySelector('.table__body');
-// const modal = document.querySelector('.modal');
-const addBtn = document.querySelector('.crm__btn_add-product');
-// const closeFormBtn = document.querySelector('.modal__close-img');
-const modalOverlay = document.querySelector('.modal-overlay');
-
-addBtn.addEventListener('click', () => {
-  modalOverlay.classList.add('is-visible');
-});
-
-modalOverlay.addEventListener('click', e => {
-  const target = e.target;
-  if (target === modalOverlay || target.closest('.modal__close-img')) {
-    modalOverlay.classList.remove('is-visible');
-  }
-});
-
 const goods = [
   {
     id: 215796548,
@@ -43,43 +19,133 @@ const goods = [
   },
 ];
 
-const createRow = (obj) => {
-  const {id, price, title, category, count, units} = obj;
+{
+  const tableBody = document.querySelector('.table__body');
+  const addBtn = document.querySelector('.crm__btn_add-product');
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const form = document.querySelector('.modal');
 
-  return `
-    <tr>
-      <td>${id}</td>
-      <td>${title}</td>
-      <td>${category}</td>
-      <td>${units}</td>
-      <td>${count}</td>
-      <td>${price}</td>
-      <td>${price * count}</td>
-      <td class="table__icons">
-        <button>
-          <img src="img/no-image.svg">
-        </button>
-        <button>
-          <img src="img/edit.svg">
-        </button>
-        <button class="delete">
-          <img src="img/delete.svg">
-        </button>
-      </td>
-    </tr>
-  `;
-};
+  const openModal = () => modalOverlay.classList.add('is-visible');
+  const closeModal = () => modalOverlay.classList.remove('is-visible');
 
-const renderGoods = (arr) =>
-  arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
+  const modalControl = () => {
+    addBtn.addEventListener('click', openModal);
 
-tableBody.addEventListener('click', e => {
-  const target = e.target;
+    modalOverlay.addEventListener('click', e => {
+      const target = e.target;
+      if (target === modalOverlay || target.closest('.modal__close-img')) {
+        closeModal();
+      }
+    });
+  };
 
-  if (target.closest('.delete')) {
-    target.closest('tr').remove();
-  }
-});
+  const activeField = ({discount, discountField}) => {
+    form.addEventListener('click', () => {
+      if (discount.checked) {
+        discountField.disabled = false;
+      } else {
+        discountField.value = '';
+        discountField.disabled = true;
+      }
+    });
+  };
 
+  const createRow = (obj) => {
+    const {id, price, title, category, count, units} = obj;
 
-renderGoods(goods);
+    return `
+      <tr>
+        <td>${id}</td>
+        <td>${title}</td>
+        <td>${category}</td>
+        <td>${units}</td>
+        <td>${count}</td>
+        <td>${price}</td>
+        <td>$<span class="total-price">${price * count}</span></td>
+        <td class="table__icons">
+          <button>
+            <img src="img/no-image.svg">
+          </button>
+          <button>
+            <img src="img/edit.svg">
+          </button>
+          <button class="delete">
+            <img src="img/delete.svg">
+          </button>
+        </td>
+      </tr>
+    `;
+  };
+
+  const renderTotalPrice = () => {
+    const totalPrice = document.querySelector('.crm__price');
+    const tablePrices = document.querySelectorAll('.total-price');
+
+    let count = 0;
+    const prices = [];
+
+    tablePrices.forEach(item => {
+      prices.push(+item.textContent);
+    });
+
+    count = prices.reduce((acc, item) => acc += item, 0);
+
+    totalPrice.textContent = `$${count}`;
+  };
+
+  const renderGoods = (arr) =>
+    arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
+
+  const deleteTr = () => {
+    const crm = document.querySelector('.crm');
+    crm.addEventListener('click', e => {
+      const target = e.target;
+
+      if (target.closest('.delete')) {
+        target.closest('tr').remove();
+        renderTotalPrice();
+      }
+    });
+  };
+
+  const formControl = (form) => {
+    const totalPrice = document.querySelector('.modal__price');
+
+    form.price.addEventListener('blur', e => {
+      const cost = form.price.value * form.amount.value;
+      const sale = cost - form.discountField.value * cost / 100;
+      totalPrice.textContent = `$${sale}`;
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const id = document.querySelector('.modal__id-value');
+      const formData = new FormData(e.target);
+
+      const newRow = Object.fromEntries(formData);
+
+      newRow.id = id.textContent;
+      newRow.title = newRow.name;
+      newRow.count = newRow.amount;
+
+      tableBody.insertAdjacentHTML('beforeend', createRow(newRow));
+
+      form.reset();
+      totalPrice.textContent = 0;
+      closeModal();
+      renderTotalPrice();
+    });
+  };
+
+  const init = () => {
+    renderGoods(goods);
+    modalControl();
+    deleteTr();
+    activeField(form);
+    formControl(form);
+    renderTotalPrice();
+  };
+
+  window.crmInit = init;
+}

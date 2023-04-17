@@ -7,6 +7,11 @@
   <title>CRM Online - Shop</title>
   <link rel="stylesheet" href="css/index.css">
   <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      crmInit();
+    })
+  </script>
 </head>
 <body>
   <div class="modal-overlay">
@@ -24,19 +29,19 @@
             <fieldset class="field-name">
               <h3 class="modal__input-title">Наименование</h3>
               <label class="modal__label">
-                <input type="text" name="name" class="modal__input">
+                <input type="text" name="name" class="modal__input" required>
               </label>
             </fieldset>
             <fieldset class="field-category">
               <h3 class="modal__input-title">Категория</h3>
               <label class="modal__label">
-                <input class="modal__input" type="text" name="category">
+                <input class="modal__input" type="text" name="category" required>
               </label>
             </fieldset>
             <fieldset class="field-units">
               <h3 class="modal__input-title">Единицы измерения</h3>
               <label class="modal__label">
-                <input class="modal__input" type="text" name="units">
+                <input class="modal__input" type="text" name="units" required>
               </label>
             </fieldset>
             <fieldset class="field-discount">
@@ -44,34 +49,35 @@
               <label class="checkbox modal__label">
                 <input class="checkbox__item" type="checkbox" name="discount">
                 <span class="checkbox__custom-item"></span>
-                <input class="checkbox__input modal__input" type="text" disabled>
+                <input class="checkbox__input modal__input" type="text"
+                name="discountField" disabled>
               </label>
             </fieldset>
             <fieldset class="field-descr">
               <h3 class="modal__input-title">Описание</h3>
               <label class="modal__label">
-                <textarea class="modal__textarea" name="description"></textarea>
+                <textarea class="modal__textarea" name="description" required></textarea>
               </label>
             </fieldset>
             <fieldset class="field-amount">
               <h3 class="modal__input-title">Количество</h3>
               <label class="modal__label">
-                <input class="modal__input" type="number" name="amount">
+                <input class="modal__input" type="number" name="amount" required>
               </label>
             </fieldset>
             <fieldset class="field-price">
               <h3 class="modal__input-title">Цена</h3>
               <label class="modal__label">
-                <input class="modal__input" type="number" name="price">
+                <input class="modal__input" type="number" name="price" required>
               </label>
             </fieldset>
             <button class="modal__btn modal__btn_add-img">Добавить изображение</button>
           </div>
           <div class="modal__footer">
             <div class="modal__cost">
-              Итоговая стоимость: <span class="modal__price">$ 900.00</span>
+              Итоговая стоимость: <span class="modal__price">$0</span>
             </div>
-            <button class="modal__btn modal__btn_add-product">Добавить товар</button>
+            <button class="modal__btn modal__btn_add-product" type="submit">Добавить товар</button>
           </div>
         </div>
       </div>
@@ -115,7 +121,7 @@
                 <td class="text-align">шт</td>
                 <td class="text-align">5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -135,7 +141,7 @@
                 <td>шт</td>
                 <td>12</td>
                 <td>$14</td>
-                <td>$169</td>
+                <td>$<span class="total-price">169</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -155,7 +161,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -175,7 +181,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -195,7 +201,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -215,7 +221,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -235,7 +241,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -255,7 +261,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -275,7 +281,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">
@@ -295,7 +301,7 @@
                 <td>шт</td>
                 <td>5</td>
                 <td>$100</td>
-                <td>$500</td>
+                <td>$<span class="total-price">500</span></td>
                 <td class="table__icons">
                   <button>
                     <img src="img/no-image.svg" alt="">

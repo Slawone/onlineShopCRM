@@ -157,6 +157,7 @@ fieldset {
   height: 40px;
   background-color: #F4F2FF;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .checkbox__custom-item:before {
