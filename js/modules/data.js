@@ -6,6 +6,7 @@ const goods = [
     category: 'Техника для дома',
     count: 5,
     units: 'шт',
+    img: 'https://fis.ru/popup_imgs/57124409.png',
   },
   {
     id: 937295527,
@@ -16,7 +17,7 @@ const goods = [
     units: 'шт',
   },
   {
-    id: 246016548,
+    id: 246016558,
     title: 'Навигационная система Soundmax',
     price: 100,
     category: 'Техника для дома',
@@ -24,7 +25,7 @@ const goods = [
     units: 'шт',
   },
   {
-    id: 937295527,
+    id: 937295517,
     title: 'Настольная игра “На 4-х ногах”',
     price: 14,
     category: 'Настольные игры',
@@ -32,7 +33,7 @@ const goods = [
     units: 'шт',
   },
   {
-    id: 215796548,
+    id: 215796598,
     title: 'ТВ приставка MECOOL KI',
     price: 9500,
     category: 'Техника для дома',

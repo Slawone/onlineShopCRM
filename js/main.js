@@ -1,5 +1,6 @@
 import goods from './modules/data.js';
-import {renderTotalPrice, renderGoods, deleteTr} from './modules/render.js';
+import {renderTotalPrice, renderGoods, deleteTr, openImageInNewTab}
+  from './modules/render.js';
 import {modalControl, activeField, formControl}
   from './modules/modalControl.js';
 import {form} from './modules/constants.js';
@@ -9,6 +10,7 @@ import {form} from './modules/constants.js';
     renderGoods(goods);
     modalControl();
     deleteTr();
+    openImageInNewTab(goods),
     activeField(form);
     formControl(form);
     renderTotalPrice();

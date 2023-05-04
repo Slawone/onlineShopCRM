@@ -30,3 +30,33 @@ export const deleteTr = () => {
     }
   });
 };
+
+export const openImageInNewTab = (arr) => {
+  const crm = document.querySelector('.crm');
+  crm.addEventListener('click', e => {
+    const target = e.target;
+    const tr = target.closest('tr');
+    if (target.closest('.good-img')) {
+      arr.forEach(item => {
+        if (item.id === +tr.firstElementChild.textContent) {
+          const width = screen.width / 2 - 600 / 2;
+          const height = screen.availHeight / 2 - 600 / 2;
+          const win = open('about:blank', '', 'width=600,height=600');
+          // const img = document.createElement('img');
+          // img.src = `${tr.dataset.pic}`;
+          // img.style.width = `600`;
+          // img.style.height = `600`;
+
+          // win.document.body.append(img);
+          win.moveBy(width, height);
+          console.log(win);
+
+          console.log(width);
+          console.log(height);
+          console.log(screen.height / 2);
+          console.log(screen.height);
+        }
+      });
+    }
+  });
+};

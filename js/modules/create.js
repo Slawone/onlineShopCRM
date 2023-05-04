@@ -1,9 +1,9 @@
 const createRow = (obj) => {
-  const {id, price, title, category, count, units} = obj;
+  const {id, price, title, category, count, units, img} = obj;
 
   return `
-    <tr>
-      <td>${id}</td>
+    <tr data-pic="${img}">
+      <td class="table-id">${id}</td>
       <td>${title}</td>
       <td>${category}</td>
       <td>${units}</td>
@@ -11,7 +11,7 @@ const createRow = (obj) => {
       <td>${price}</td>
       <td>$<span class="total-price">${price * count}</span></td>
       <td class="table__icons">
-        <button>
+        <button class="good-img">
           <img src="img/no-image.svg">
         </button>
         <button>
