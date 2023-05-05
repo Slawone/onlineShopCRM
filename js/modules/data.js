@@ -6,7 +6,7 @@ const goods = [
     category: 'Техника для дома',
     count: 5,
     units: 'шт',
-    img: 'https://fis.ru/popup_imgs/57124409.png',
+    img: 'img/1.jpg',
   },
   {
     id: 937295527,
@@ -15,6 +15,7 @@ const goods = [
     category: 'Настольные игры',
     count: 12,
     units: 'шт',
+    img: 'img/2.jpg',
   },
   {
     id: 246016558,
@@ -23,6 +24,7 @@ const goods = [
     category: 'Техника для дома',
     count: 5,
     units: 'шт',
+    img: 'img/1.jpg',
   },
   {
     id: 937295517,
@@ -31,6 +33,7 @@ const goods = [
     category: 'Настольные игры',
     count: 12,
     units: 'шт',
+    img: 'img/1.jpg',
   },
   {
     id: 215796598,
@@ -39,6 +42,7 @@ const goods = [
     category: 'Техника для дома',
     count: 3,
     units: 'шт',
+    img: 'img/2.jpg',
   },
   {
     id: 215796550,
@@ -47,6 +51,7 @@ const goods = [
     category: 'Техника для дома',
     count: 5,
     units: 'шт',
+    img: 'img/1.jpg',
   },
 ];
 

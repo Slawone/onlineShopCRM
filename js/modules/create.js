@@ -3,7 +3,7 @@ const createRow = (obj) => {
 
   return `
     <tr data-pic="${img}">
-      <td class="table-id">${id}</td>
+      <td>${id}</td>
       <td>${title}</td>
       <td>${category}</td>
       <td>${units}</td>
