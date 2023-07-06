@@ -5,16 +5,14 @@ import {modalControl, activeField, formControl}
   from './modules/modalControl.js';
 import {form} from './modules/constants.js';
 
-{
-  const init = () => {
-    renderGoods(goods);
-    modalControl();
-    deleteTr();
-    openImageInNewTab(goods),
-    activeField(form);
-    formControl(form);
-    renderTotalPrice();
-  };
+const init = () => {
+  renderGoods(goods);
+  modalControl();
+  deleteTr();
+  openImageInNewTab(goods),
+  activeField(form);
+  formControl(form);
+  renderTotalPrice();
+};
 
-  window.crmInit = init;
-}
+init();
