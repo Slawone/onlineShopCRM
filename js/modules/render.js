@@ -40,14 +40,15 @@ export const openImageInNewTab = (arr) => {
       arr.forEach(item => {
         if (item.id === +tr.firstElementChild.textContent) {
           const width = screen.width / 2 - 600 / 2;
-          const height = screen.availHeight / 2 - 600 / 2;
+          const height = screen.height / 2 - 600 / 2;
+          const imgPath = tr.dataset.pic;
           // const imgPath = `${tr.dataset.pic}`;
           const img = document.createElement('img');
-          img.src = tr.dataset.pic;
+          img.src = imgPath;
           // img.style.width = `600px`;
-          // img.style.height = `600px`;
+          img.style.height = '100%';
           const win =
-            open(tr.dataset.pic, '', 'width=600,height=600');
+            open(imgPath, '', 'width=600,height=600');
 
           win.document.body.append(img);
           win.moveBy(width, height);
