@@ -17,15 +17,32 @@ export const renderTotalPrice = () => {
   totalPrice.textContent = `$${count}`;
 };
 
-export const renderGoods = (arr) =>
+export const renderGoods = (err, arr) => {
+  if (err) {
+    tableBody.insertAdjacentHTML('beforeend', `
+      <h2 class="error-text">Данные не подгрузились, обновите страницу</h2>
+    `);
+
+    return;
+  }
   arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
+  renderTotalPrice();
+}
 
 export const deleteTr = () => {
   const crm = document.querySelector('.crm');
+
   crm.addEventListener('click', e => {
     const target = e.target;
+
     if (target.closest('.delete')) {
-      target.closest('tr').remove();
+      const row = target.closest('tr');
+
+      row.remove();
+      
+      fetch(`https://fourth-elastic-tortoise.glitch.me/api/goods/${row.dataset.id}`, {
+        method: 'DELETE',
+      });
       renderTotalPrice();
     }
   });

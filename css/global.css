@@ -73,3 +73,8 @@ input, textarea {
   padding: 0 30px;
   margin: 0 auto;
 }
+
+.error-text {
+  text-align: center;
+  color: red;
+}

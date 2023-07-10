@@ -1,6 +1,7 @@
 import createRow from './create.js';
 import {renderTotalPrice} from './render.js';
 import {tableBody, addBtn, modalOverlay, form} from './constants.js';
+import { fetchRequest } from './fetch.js';
 
 const openModal = () => modalOverlay.classList.add('is-visible');
 const closeModal = () => modalOverlay.classList.remove('is-visible');
@@ -31,7 +32,7 @@ export const formControl = (form) => {
   const totalPrice = document.querySelector('.modal__price');
 
   form.price.addEventListener('blur', e => {
-    const cost = form.price.value * form.amount.value;
+    const cost = form.price.value * form.count.value;
     const sale = cost - form.discountField.value * cost / 100;
     totalPrice.textContent = `$${sale}`;
   });
@@ -39,20 +40,38 @@ export const formControl = (form) => {
   form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const id = document.querySelector('.modal__id-value');
     const formData = new FormData(e.target);
-
     const newRow = Object.fromEntries(formData);
+   
+    const id = document.querySelector('.modal__id-value');
 
     newRow.id = id.textContent;
-    newRow.title = newRow.name;
-    newRow.count = newRow.amount;
 
-    tableBody.insertAdjacentHTML('beforeend', createRow(newRow));
-
-    form.reset();
-    totalPrice.textContent = 0;
-    closeModal();
-    renderTotalPrice();
+    fetchRequest('https://fourth-elastic-tortoise.glitch.me/api/goods/', {
+      method: 'POST',
+      body: {
+        title: newRow.title,
+        category: newRow.category,
+        units: newRow.units,
+        discountField: newRow.discountField,
+        description: newRow.description,
+        count: newRow.count,
+        price: newRow.price,
+      },
+      callback(err, data) {
+        if (err) {
+          form.textContent = 'err';
+        } else {
+          tableBody.insertAdjacentHTML('beforeend', createRow(newRow));
+          form.reset();
+          totalPrice.textContent = 0;
+          closeModal();
+          renderTotalPrice();
+        }
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   });
 };
