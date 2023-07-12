@@ -8,11 +8,19 @@ import { fetchRequest } from './modules/fetch.js';
 
 const URL = 'https://fourth-elastic-tortoise.glitch.me/api/goods/';
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchRequest(URL, {
-    method: 'GET',
-    callback: renderGoods,
-  })
+// document.addEventListener('DOMContentLoaded', () => {
+//   fetchRequest(URL, {
+//     method: 'GET',
+//     callback: renderGoods,
+//   })
+// })
+
+fetchRequest(URL, {
+  method: 'GET',
+  callback: renderGoods,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
 
 const init = () => {

@@ -19,10 +19,7 @@ export const renderTotalPrice = () => {
 
 export const renderGoods = (err, arr) => {
   if (err) {
-    tableBody.insertAdjacentHTML('beforeend', `
-      <h2 class="error-text">Данные не подгрузились, обновите страницу</h2>
-    `);
-
+    tableBody.textContent = `Произошла ошибка загрузки`;
     return;
   }
   arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
