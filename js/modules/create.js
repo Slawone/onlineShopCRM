@@ -1,8 +1,8 @@
 const createRow = (obj) => {
-  const {id, price, title, category, count, units, img} = obj;
+  const {id, price, title, category, count, units, image} = obj;
 
   return `
-    <tr data-pic="${img}">
+    <tr data-id="${id}" data-pic="${image}">
       <td>${id}</td>
       <td>${title}</td>
       <td>${category}</td>

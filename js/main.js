@@ -1,20 +1,35 @@
-import goods from './modules/data.js';
-import {renderTotalPrice, renderGoods, deleteTr, openImageInNewTab}
+// import goods from './modules/data.js';
+import { renderTotalPrice, renderGoods, deleteTr, openImageInNewTab }
   from './modules/render.js';
-import {modalControl, activeField, formControl}
+import { modalControl, activeField, formControl }
   from './modules/modalControl.js';
-import {form} from './modules/constants.js';
+import { form } from './modules/constants.js';
+import { fetchRequest } from './modules/fetch.js';
 
-{
-  const init = () => {
-    renderGoods(goods);
-    modalControl();
-    deleteTr();
-    openImageInNewTab(goods),
-    activeField(form);
-    formControl(form);
-    renderTotalPrice();
-  };
+const URL = 'https://fourth-elastic-tortoise.glitch.me/api/goods/';
 
-  window.crmInit = init;
-}
+// document.addEventListener('DOMContentLoaded', () => {
+//   fetchRequest(URL, {
+//     method: 'GET',
+//     callback: renderGoods,
+//   })
+// })
+
+fetchRequest(URL, {
+  method: 'GET',
+  callback: renderGoods,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+const init = () => {
+  // renderGoods(goods);
+  modalControl();
+  deleteTr();
+  // openImageInNewTab(goods),
+  activeField(form);
+  formControl(form);
+};
+
+init();
