@@ -1,5 +1,7 @@
 import createRow from './create.js';
 import {tableBody} from './constants.js';
+import { fetchRequest } from './fetch.js';
+import showModal from './modal.js';
 
 export const renderTotalPrice = () => {
   const totalPrice = document.querySelector('.crm__price');
@@ -24,17 +26,10 @@ export const renderGoods = (err, arr) => {
   }
   arr.map(item => tableBody.insertAdjacentHTML('beforeend', createRow(item)));
   renderTotalPrice();
-}
 
-export const deleteTr = () => {
-  const crm = document.querySelector('.crm');
-
-  crm.addEventListener('click', e => {
-    const target = e.target;
-
+  tableBody.addEventListener('click', ({target}) => {
     if (target.closest('.delete')) {
       const row = target.closest('tr');
-
       row.remove();
       
       fetch(`https://fourth-elastic-tortoise.glitch.me/api/goods/${row.dataset.id}`, {
@@ -42,8 +37,15 @@ export const deleteTr = () => {
       });
       renderTotalPrice();
     }
-  });
-};
+    if (target.closest('.edit')) {
+      fetchRequest('https://fourth-elastic-tortoise.glitch.me/api/goods', {
+        callback: showModal,
+      })
+    }
+  })
+
+  return true;
+}
 
 export const openImageInNewTab = (arr) => {
   const crm = document.querySelector('.crm');

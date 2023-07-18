@@ -14,7 +14,7 @@ const createRow = (obj) => {
         <button class="good-img">
           <img src="img/no-image.svg">
         </button>
-        <button>
+        <button class="edit">
           <img src="img/edit.svg">
         </button>
         <button class="delete">

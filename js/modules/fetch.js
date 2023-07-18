@@ -1,5 +1,3 @@
-// const URL = 'https://fourth-elastic-tortoise.glitch.me/api/goods';
-
 export const fetchRequest = async (url, {
   method = 'GET',
   callback,
@@ -18,13 +16,13 @@ export const fetchRequest = async (url, {
     
     if (response.ok) {
       const data = await response.json();
-      if (callback) callback(null, data);
+      if (callback) return callback(null, data);
       return;
     }
 
     throw new Error(response.status);
 
   } catch (error) {
-    callback(error.message)
+    return callback(error.message)
   }
 }
